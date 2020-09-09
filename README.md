@@ -22,6 +22,8 @@ Source code for grapebot gazebo simulator.
 
     * rosrun grapebot_gazebo_sim SimpleCommandPublisher.py
 
+## Package Description
+
 ### Grapebot Gazebo Sim
 
 Robot description for simulation in gazebo
