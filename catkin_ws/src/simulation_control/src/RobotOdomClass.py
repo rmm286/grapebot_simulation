@@ -124,7 +124,7 @@ class RobotOdom(Robot):
         """
 
         self._state['linear_velocity'] = self.wheelVelocities['front']*cos(self.steer_angle)
-        self._state['angular_velocity'] = self._state['linear_velocity']*tan(self.steer_angle)/self.robot_length
+        self._state['angular_velocity'] = self._state['linear_velocity']*tan(self.steer_angle)//self.robot_length
         
         #TODO: use different wheels with different drive modes to mitigate error from slipping
         
