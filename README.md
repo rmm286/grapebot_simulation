@@ -66,10 +66,6 @@ PID gains set to arbitrary values
 
 ### Grapebot Data Analysis
 
-Read topics from gazebo and Simulation control and provide data visualization.
-
-1. Data Analysis
-
 Record data and provide visualization through pandas and matplotlib.
 
 * Read true state from gazebo
