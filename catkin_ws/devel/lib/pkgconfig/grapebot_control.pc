@@ -1,0 +1,8 @@
+prefix=/home/pc/grapebot_simulation/catkin_ws/devel
+
+Name: grapebot_control
+Description: Description of grapebot_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: grapebot_msgs

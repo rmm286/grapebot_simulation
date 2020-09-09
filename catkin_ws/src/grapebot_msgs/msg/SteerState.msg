@@ -1,0 +1,4 @@
+Header header
+
+float32 CurrentSteerAngle
+float32 CurrentSensorRead

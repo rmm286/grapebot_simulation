@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!-- Spawns grapebot File with controllers -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+    <include file="$(find grapebot_sim_launch)/launch/spawn_urdf.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.2" />
+        <arg 
+        name="urdf_robot_file"
+        value="$(find grapebot_gazebo_sim)/urdf/grapebot_lite_assy_controllers.urdf"
+        />
+        <arg name="robot_name" value="grapebot" />
+    </include>
+</launch>

@@ -1,0 +1,17 @@
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find grapebot_gazebo_sim)/config/grapebot_onecontroller.yaml" command="load"/>
+
+  <!-- load the controllers -->
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/grapebot" args="front_wheel_axis_joint_position_controller front_wheel_joint_velocity_controller back_right_wheel_joint_velocity_controller back_left_wheel_joint_velocity_controller joint_state_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/grapebot/joint_states" />
+  </node>
+  <param name="robot_description" command="cat $(find grapebot_gazebo_sim)/urdf/grapebot_lite_assy_controllers.urdf"/>
+
+</launch>

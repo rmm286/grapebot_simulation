@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <node pkg="grapebot_data_analysis" type="DataAnalysis.py" name="data_analysis_node" output="screen"/> 
+</launch>

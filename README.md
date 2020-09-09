@@ -1,29 +1,23 @@
-# README #
+# Grapebot Simulation
 
-This README would normally document whatever steps are necessary to get your application up and running.
+* Author: Rayne Milner
+* Maintainer: Rayne Milner rmmilner@ucdavis.edu
+* Org: UC Davis
 
-### What is this repository for? ###
+## Description
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Source code for grapebot gazebo simulator
 
-### How do I get set up? ###
+## Dependencies list
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* ROS: <http://wiki.ros.org/kinetic/Installation/Ubuntu>
 
-### Contribution guidelines ###
+## Launch Commands
 
-* Writing tests
-* Code review
-* Other guidelines
+1. Start gazebo, spawn grapebot and controllers
 
-### Who do I talk to? ###
+    * roslaunch grapebot_gazebo_sim start_grapebot.launch
 
-* Repo owner or admin
-* Other community or team contact
+2. Issue simple control commands
+
+    * rosrun grapebot_gazebo_sim SimpleCommandPublisher.py

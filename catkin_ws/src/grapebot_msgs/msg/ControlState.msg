@@ -1,0 +1,13 @@
+Header header
+
+float32 SteerAngleCommand
+float32 SteerAngleResponse
+
+float32 linearVelocityCommand
+float32 leftWheelVelocityCommand
+float32 rightWheelVelocityCommand
+float32 frontWheelVelocityCommand
+float32 linearVelocityResponse
+float32 leftWheelVelocityResponse
+float32 rightWheelVelocityResponse
+float32 frontWheelVelocityResponse

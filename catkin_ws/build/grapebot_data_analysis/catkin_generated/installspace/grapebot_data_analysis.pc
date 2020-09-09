@@ -1,0 +1,8 @@
+prefix=/home/pc/temp/catkin_ws/install
+
+Name: grapebot_data_analysis
+Description: Description of grapebot_data_analysis
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: grapebot_msgs

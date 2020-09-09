@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="grapebot_lite_assy">
+  <link
+    name="grapebot/base_link">
+    <inertial>
+      <origin
+        xyz="0.04503 0.18197 0.22262"
+        rpy="0 0 0" />
+      <mass
+        value="94.942" />
+      <inertia
+        ixx="2.8744"
+        ixy="-0.0027752"
+        ixz="0.0014785"
+        iyy="2.8391"
+        iyz="-9.9062E-06"
+        izz="4.0824" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/grapebot_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.49804 0.49804 0.49804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/grapebot_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="front_imu">
+    <inertial>
+      <origin
+        xyz="5.1001E-15 0.035764 -2.2204E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.41665" />
+      <inertia
+        ixx="0.00041463"
+        ixy="3.1361E-20"
+        ixz="-2.4992E-21"
+        iyy="0.0006824"
+        iyz="-2.7138E-21"
+        izz="0.00041463" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_imu.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_imu.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_imu_joint"
+    type="fixed">
+    <origin
+      xyz="0.049611 0.72299 1.4678"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="grapebot/base_link" />
+    <child
+      link="front_imu" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rear_imu">
+    <inertial>
+      <origin
+        xyz="0 0.035764 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.41665" />
+      <inertia
+        ixx="0.00041463"
+        ixy="3.2406E-21"
+        ixz="-5.0822E-21"
+        iyy="0.0006824"
+        iyz="-8.1583E-21"
+        izz="0.00041463" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/rear_imu.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/rear_imu.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_imu_joint"
+    type="fixed">
+    <origin
+      xyz="0.049611 -0.74801 1.4678"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="grapebot/base_link" />
+    <child
+      link="rear_imu" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_wheel_axis">
+    <inertial>
+      <origin
+        xyz="0.0021751 -0.12024 4.0859E-05"
+        rpy="0 0 0" />
+      <mass
+        value="4.7785" />
+      <inertia
+        ixx="0.017515"
+        ixy="-5.8949E-05"
+        ixz="-3.1045E-08"
+        iyy="0.013329"
+        iyz="4.0488E-06"
+        izz="0.017158" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_wheel_axis.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_wheel_axis.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_axis_joint"
+    type="revolute">
+    <origin
+      xyz="-0.043219 0.90506 0.25282"
+      rpy="1.5708 0 0" />
+    <parent
+      link="grapebot/base_link" />
+    <child
+      link="front_wheel_axis" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="front_wheel">
+    <inertial>
+      <origin
+        xyz="0.092645 2.4182E-09 9.3253E-09"
+        rpy="0 0 0" />
+      <mass
+        value="8.3099" />
+      <inertia
+        ixx="0.15838"
+        ixy="2.4123E-10"
+        ixz="9.7714E-10"
+        iyy="0.083316"
+        iyz="-3.2677E-10"
+        izz="0.083316" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.01952 -0.4191 0"
+      rpy="0 0 0" />
+    <parent
+      link="front_wheel_axis" />
+    <child
+      link="front_wheel" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="back_right_wheel">
+    <inertial>
+      <origin
+        xyz="0.092645 9.2768E-09 -2.7104E-09"
+        rpy="0 0 0" />
+      <mass
+        value="8.3099" />
+      <inertia
+        ixx="0.15838"
+        ixy="9.6945E-10"
+        ixz="-2.7051E-10"
+        iyy="0.083316"
+        iyz="-3.5855E-08"
+        izz="0.083316" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/back_right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/back_right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.37299 -0.36176 -0.16016"
+      rpy="1.5708 0 0" />
+    <parent
+      link="grapebot/base_link" />
+    <child
+      link="back_right_wheel" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="back_left_wheel">
+    <inertial>
+      <origin
+        xyz="-0.092645 9.2768E-09 -2.7104E-09"
+        rpy="0 0 0" />
+      <mass
+        value="8.3099" />
+      <inertia
+        ixx="0.15838"
+        ixy="9.6945E-10"
+        ixz="-2.7051E-10"
+        iyy="0.083316"
+        iyz="-3.5855E-08"
+        izz="0.083316" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/back_left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://grapebot_gazebo_sim/meshes/back_left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.31187 -0.36176 -0.16016"
+      rpy="1.5708 0 0" />
+    <parent
+      link="grapebot/base_link" />
+    <child
+      link="back_left_wheel" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+</robot>

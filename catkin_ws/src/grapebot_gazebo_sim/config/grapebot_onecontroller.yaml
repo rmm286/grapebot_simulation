@@ -1,0 +1,34 @@
+grapebot:
+    # Publish all joint states -----------------------------------
+    joint_state_controller:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50
+
+    # Position Controllers ---------------------------------------
+    front_wheel_axis_joint_position_controller:
+      type: effort_controllers/JointPositionController
+      joint: front_wheel_axis_joint
+      pid: {p: 10.0, i: 0.1, d: 10.0}
+    
+    # Velocity Controllers ---------------------------------------
+    front_wheel_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: front_wheel_joint
+
+    back_right_wheel_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: back_right_wheel_joint
+
+    back_left_wheel_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: back_left_wheel_joint
+
+    # To add more just add them here as the first one
+
+# we have to add Velocity PID gains like this so Gazebo can find them
+/gazebo_ros_control/pid_gains:
+  back_left_wheel_joint: {p: 10, i: 0.0, d: 0.0}
+  back_right_wheel_joint: {p: 10, i: 0.0, d: 0.0}
+  front_wheel_joint: {p: 10, i: 0.0, d: 0.0}
+
+  
