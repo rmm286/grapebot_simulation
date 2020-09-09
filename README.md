@@ -36,20 +36,16 @@ Robot description for simulation in gazebo
 
 PID gains set to arbitrary values
 
-    * Front wheel velocity controller
-
-    * Back right wheel velocity controller
-
-    * Back left wheel velocity controller
-
-    * Front steering position controller
+* Front wheel velocity controller
+* Back right wheel velocity controller
+* Back left wheel velocity controller
+* Front steering position controller
 
 ### Simulation Control
 
 1. Robot
 
     * Store geometric description of robot
-
     * Store control commands, control state
 
 2. Robot Odom
@@ -57,9 +53,7 @@ PID gains set to arbitrary values
     Provides functionality to compute odometry of robot.
 
     * Read model state from gazebo, initialize starting position
-
     * Read joint states (wheel velocity and steering position) from gazebo
-
     * Publish odometry
 
 3. Simulation Control
@@ -67,9 +61,7 @@ PID gains set to arbitrary values
     Main file for package. Read high level control commands and compute desired wheel velocity
 
     * Publish joint state commands
-
     * Read control command
-
     * Publish control state topic for debug
 
 ### Grapebot Data Analysis
@@ -80,12 +72,8 @@ Read topics from gazebo and Simulation control and provide data visualization.
 
 Record data and provide visualization through pandas and matplotlib.
 
-    * Read true state from gazebo
-
-    * Read Odometry topic
-
-    * Save data streams to csv
-
-    * Provide visualization of odometry and true state, saved to cwd as PNG images
-
-    * Provide visualization of linear velocity response, saved to cwd as PNG images. 
+* Read true state from gazebo
+* Read Odometry topic
+* Save data streams to csv
+* Provide visualization of odometry and true state, saved to cwd as PNG images
+* Provide visualization of linear velocity response, saved to cwd as PNG images.
