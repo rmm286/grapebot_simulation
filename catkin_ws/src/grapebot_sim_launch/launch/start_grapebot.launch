@@ -4,5 +4,5 @@
     <include file="$(find grapebot_sim_launch)/launch/spawn_grapebot_with_controller.launch"/>
     <include file="$(find grapebot_sim_launch)/launch/grapebot_control.launch"/>
     <arg name="node_start_delay" default="3.0" />  
-    <node pkg="grapebot_gazebo_sim" type="SimulationControl.py" name="simulation_control_node" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/> 
+    <node pkg="simulation_control" type="SimulationControl.py" name="simulation_control_node" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/> 
 </launch>

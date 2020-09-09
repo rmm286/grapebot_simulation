@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pc/temp/catkin_ws/devel/setup.sh
+    local-name: /home/pc/grapebot_simulation/catkin_ws/devel/setup.sh

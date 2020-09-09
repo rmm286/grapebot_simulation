@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/temp/catkin_ws/src/grapebot_gazebo_sim
+# Install script for directory: /home/pc/grapebot_simulation/catkin_ws/src/grapebot_gazebo_sim
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/temp/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/grapebot_simulation/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -41,7 +41,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/config" TYPE DIRECTORY FILES "/home/pc/temp/catkin_ws/src/grapebot_gazebo_sim/config/")
+file(INSTALL DESTINATION "/config" TYPE DIRECTORY FILES "/home/pc/grapebot_simulation/catkin_ws/src/grapebot_gazebo_sim/config/")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -53,7 +53,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/meshes" TYPE DIRECTORY FILES "/home/pc/temp/catkin_ws/src/grapebot_gazebo_sim/meshes/")
+file(INSTALL DESTINATION "/meshes" TYPE DIRECTORY FILES "/home/pc/grapebot_simulation/catkin_ws/src/grapebot_gazebo_sim/meshes/")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -65,6 +65,6 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/urdf" TYPE DIRECTORY FILES "/home/pc/temp/catkin_ws/src/grapebot_gazebo_sim/urdf/")
+file(INSTALL DESTINATION "/urdf" TYPE DIRECTORY FILES "/home/pc/grapebot_simulation/catkin_ws/src/grapebot_gazebo_sim/urdf/")
 endif()
 

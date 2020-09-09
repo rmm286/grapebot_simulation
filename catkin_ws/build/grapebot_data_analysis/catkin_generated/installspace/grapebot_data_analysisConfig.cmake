@@ -67,14 +67,14 @@ set(grapebot_data_analysis_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(grapebot_data_analysis_SOURCE_PREFIX /home/pc/temp/catkin_ws/src/grapebot_data_analysis)
-  set(grapebot_data_analysis_DEVEL_PREFIX /home/pc/temp/catkin_ws/devel)
+  set(grapebot_data_analysis_SOURCE_PREFIX /home/pc/grapebot_simulation/catkin_ws/src/grapebot_data_analysis)
+  set(grapebot_data_analysis_DEVEL_PREFIX /home/pc/grapebot_simulation/catkin_ws/devel)
   set(grapebot_data_analysis_INSTALL_PREFIX "")
   set(grapebot_data_analysis_PREFIX ${grapebot_data_analysis_DEVEL_PREFIX})
 else()
   set(grapebot_data_analysis_SOURCE_PREFIX "")
   set(grapebot_data_analysis_DEVEL_PREFIX "")
-  set(grapebot_data_analysis_INSTALL_PREFIX /home/pc/temp/catkin_ws/install)
+  set(grapebot_data_analysis_INSTALL_PREFIX /home/pc/grapebot_simulation/catkin_ws/install)
   set(grapebot_data_analysis_PREFIX ${grapebot_data_analysis_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/pc/temp/catkin_ws/install/lib;/home/pc/grapebot_simulation/catkin_ws/devel/lib;/home/pc/ws_moveit/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/pc/grapebot_simulation/catkin_ws/install/lib;/home/pc/grapebot_simulation/catkin_ws/devel/lib;/home/pc/ws_moveit/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

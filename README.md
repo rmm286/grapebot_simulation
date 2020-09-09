@@ -20,9 +20,9 @@ Source code for grapebot gazebo simulator.
 
 2. Issue simple control commands
 
-    * rosrun grapebot_gazebo_sim SimpleCommandPublisher.py
+    * rosrun grapebot_sim_launch SimpleCommandPublisher.py
 
-## Package Description
+## Package Descriptions
 
 ### Grapebot Gazebo Sim
 

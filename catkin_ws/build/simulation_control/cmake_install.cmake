@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/temp/catkin_ws/src/simulation_control
+# Install script for directory: /home/pc/grapebot_simulation/catkin_ws/src/simulation_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/temp/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/grapebot_simulation/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/temp/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_control.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/grapebot_simulation/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_control.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation_control/cmake" TYPE FILE FILES
-    "/home/pc/temp/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_controlConfig.cmake"
-    "/home/pc/temp/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_controlConfig-version.cmake"
+    "/home/pc/grapebot_simulation/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_controlConfig.cmake"
+    "/home/pc/grapebot_simulation/catkin_ws/build/simulation_control/catkin_generated/installspace/simulation_controlConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation_control" TYPE FILE FILES "/home/pc/temp/catkin_ws/src/simulation_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/simulation_control" TYPE FILE FILES "/home/pc/grapebot_simulation/catkin_ws/src/simulation_control/package.xml")
 endif()
 

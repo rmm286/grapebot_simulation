@@ -1,4 +1,4 @@
-prefix=/home/pc/temp/catkin_ws/install
+prefix=/home/pc/grapebot_simulation/catkin_ws/install
 
 Name: simulation_control
 Description: Description of simulation_control
