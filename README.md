@@ -1,4 +1,4 @@
-# Grapebot Simulation: A physics simulator for an agricultural vehicle
+# Grapebot Simulation: A Physics Simulator for an Agricultural Vehicle
 
 * Author: Rayne Milner
 * Maintainer: Rayne Milner
@@ -17,7 +17,7 @@ The Grapebot simulator is a ROS based tool that uses [Gazebo][1] to model the ph
 
 * ROS Kinetic: <http://wiki.ros.org/kinetic/Installation/Ubuntu>
 
-	* ROS Kinetic is only supported on a few Ubuntu distributions and architectures, check the ROS installation page for details.
+    * ROS Kinetic is only supported on a few Ubuntu distributions and architectures, check the ROS installation page for details.
 
 ## Installation
 
