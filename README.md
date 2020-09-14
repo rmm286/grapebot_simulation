@@ -7,9 +7,13 @@
 
 ## Overview
 
+***
+
 The Grapebot simulator is a ROS based tool that uses [Gazebo][1] to model the physics of an agricultural vehicle. This simulator is designed to interface with robotic systems exactly like a physical robot and provide tools for faster development and validation of these systems.
 
 ## Dependencies
+
+***
 
 * ROS Kinetic: <http://wiki.ros.org/kinetic/Installation/Ubuntu>
 
@@ -17,23 +21,27 @@ The Grapebot simulator is a ROS based tool that uses [Gazebo][1] to model the ph
 
 ## Installation
 
+***
+
 ROS is built in a catkin workspace. Read more about catkin [here](http://wiki.ros.org/action/fullsearch/catkin/conceptual_overview?action=fullsearch&context=180&value=linkto%3A%22catkin%2Fconceptual_overview%22).
 
 To build, navigate to the catkin workspace, remove any build files and run catkin_make.
 
- `cd catkin_ws`
- `rm -rd build`
- `catkin_make`
+ `cd catkin_ws;`
+ `rm -rd build;`
+ `catkin_make;`
 
 At this point, you may encounter issues with dependencies so you can install these with your package manager, with [rosdep](http://wiki.ros.org/ROS/Tutorials/rosdep), or with APT like this.
 
-`sudo apt-get install ros-kinetic-<dependency>`
+`sudo apt-get install ros-kinetic-<dependency>;`
 
 Run catkin_make until successful.
 
 ## Usage
 
-All primary functionalities are initialized with one roslaunch command: `roslaunch grapebot_sim_launch start_grapebot.launch`. This command will open gazebo, spawn the grapebot, start the controllers as well as publish all output topics. In order to move the grapeobt, the user must publish messages to the ControlCommand topic, either through the command line, or with another node.
+***
+
+All primary functionalities are initialized with one roslaunch command: `roslaunch grapebot_sim_launch start_grapebot.launch;`. This command will open gazebo, spawn the grapebot, start the controllers as well as publish all output topics. In order to move the grapeobt, the user must publish messages to the ControlCommand topic, either through the command line, or with another node.
 
 Additional launch commands initialize data visualization, run a simple control command publisher, or start Rviz visualization. See Launch Commands subsection.
 
@@ -43,27 +51,29 @@ The Rosnodes in this package produce data streams in the form of [Rostopics][2].
 
 Start gazebo, spawn grapebot and controllers:
 
-* roslaunch grapebot_sim_launch start_grapebot.launch
+* `roslaunch grapebot_sim_launch start_grapebot.launch`
 
 Issue simple control commands:
 
-* rosrun grapebot_sim_launch SimpleCommandPublisher.py
+* `rosrun grapebot_sim_launch SimpleCommandPublisher.py`
 
 Visualize using Rviz:
 
-* roslaunch grapebot_sim_launch display.launch
+* `roslaunch grapebot_sim_launch display.launch`
 
 Data Visualization Node:
 
-* roslaunch grapebot_sim_launch start_data_analysis.launch
+* `roslaunch grapebot_sim_launch start_data_analysis.launch`
 
-### Topics
+## Topics
+
+***
 
 ### Input Topics
 
 These topics are taken as inputs to the nodes in the simulation. Topics can be sent on the command line with a call like `rostopic pub <topic-name> <topic-type> [data...]`. See [rostopics wiki page][2] for more information.
 
-##### ControlCommand
+### ControlCommand
 
 `"/grapebot/ControlCommand"`
 
@@ -84,13 +94,13 @@ Commands can be given in two high level modes: ControlMode 0 and 1. In mode 0, t
 
 These topics are published as outputs from the nodes in the simulation. Topics can be read on the command line with a call like `rostopic echo <topic-name>`. See [rostopics wiki page][2] for more information.
 
-##### Odometry
+### Odometry
 
 `"/odom"`
 
 This topic provides the current odometry of the COM of the robot in the world frame. This message is calculated from the wheel velocities and the steering angle as read by gazebo joint state topic. Is a standard [nav_message](http://docs.ros.org/melodic/api/nav_msgs/html/msg/Odometry.html).
 
-##### ControlState
+### ControlState
 
 `"/grapebot/ControlState"`
 
@@ -110,11 +120,11 @@ float32 rightWheelVelocityResponse
 float32 frontWheelVelocityResponse
 ```
 
-##### JointState
+### JointState
 
 `"/grapebot/JointState"`
 
-The joint states topic is a data stream which publishes the position, velocity and effort for every controlled joint in the robot description as calculated by gazebos physics engines. Note that the joint state reflects real dynamics and will not be exactly equal to the commanded velocity/position for that joint. Revolute joints give angles as radians. 
+The joint states topic is a data stream which publishes the position, velocity and effort for every controlled joint in the robot description as calculated by gazebos physics engines. Note that the joint state reflects real dynamics and will not be exactly equal to the commanded velocity/position for that joint. Revolute joints give angles as radians.
 
 Details on this topic can be found in the [sensor messages documentation for Joint States][4].
 
@@ -125,7 +135,7 @@ Below is the name of each controlled joint.
 * front_wheel_axis_joint
 * front_wheel_joint
 
-##### ModelState
+### ModelState
 
 `"/gazebo/model_states"`
 
@@ -135,7 +145,7 @@ Gazebo publishes the state of each object in the simulation in the form of Pose 
 
 There are a few topics that are used internally to communicate between nodes. These messages may be read or published for debugging purposes or to extend functionality.
 
-##### Controller Commands
+### Controller Commands
 
 * `"/grapebot/back_left_wheel_joint_velocity_controller/command"`
 
@@ -148,6 +158,8 @@ There are a few topics that are used internally to communicate between nodes. Th
 There is one message generated for each controller. In this simulation there are three velocity controllers to set the velocity of each wheel, as well as one position controller to set the position of the steering axis. Details about ROS control can be found in the [ROS control documentation][3] and in the package descriptions section.
 
 ## Package Descriptions
+
+***
 
 ### Grapebot Gazebo Sim
 
@@ -201,8 +213,9 @@ Record data and provide visualization through pandas and matplotlib.
 * Provides visualization of odometry and true state, saved to cwd as PNG images
 * Provides visualization of linear velocity response, saved to cwd as PNG images.
 
-
 ## External Links
+
+***
 
 * <http://gazebosim.org/tutorials?tut=guided_b1&cat=>
 * <http://wiki.ros.org/rostopic>
@@ -213,6 +226,8 @@ Record data and provide visualization through pandas and matplotlib.
 * <http://wiki.ros.org/action/fullsearch/catkin/conceptual_overview?action=fullsearch&context=180&value=linkto%3A%22catkin%2Fconceptual_overview%22>
 
 ## License
+
+***
 
 MIT License
 
