@@ -77,8 +77,10 @@ class RobotOdom(Robot):
                             'vy': twist.linear.y,
                             'linear_velocity': 0,
                             'angular_velocity': twist.angular.z}
+        print(self._state['theta'])                    
         self._state['theta'] = self.convert_quat_angle_to_unitary(self._state['theta'][2]) + pi/2 # we have to phase shift to match traditional convention
-        self._state['quat'] = tf.transformations.quaternion_from_euler(0, 0, self._state['theta'])
+        print(self._state['theta'])
+        self._state['quat'] = tf.transformations.quaternion_from_euler(0.0, 0.0, self._state['theta'])
         self._state['linear_velocity'] = math.sqrt(self._state['vx']**2 + self._state['vy']**2)
 
         self._timestamp = rospy.get_rostime()
@@ -118,13 +120,17 @@ class RobotOdom(Robot):
     def update_odom(self,delta_t):
 
         """
-        updates the current pose of robot based on sensed wheel velocity and steering angle
+        updates the current pose of robot based on sensed wheel velocity and steering angle.
+
+        Note on Gazebo and typical Yaw conventions: Gazebo chooses to define theta (the yaw angle) as the angle originating at the y-axis
+        moving CCW toward the negative x direction. We instead choose to report this angle conventionally as originating at x-axis and moving
+        CCW toward y-axis.
 
         :param delta_t: timestep, seconds
         """
 
         self._state['linear_velocity'] = self.wheelVelocities['front']*cos(self.steer_angle)
-        self._state['angular_velocity'] = self._state['linear_velocity']*tan(self.steer_angle)//self.robot_length
+        self._state['angular_velocity'] = self._state['linear_velocity']*tan(self.steer_angle)//self.robot_length        
         
         #TODO: use different wheels with different drive modes to mitigate error from slipping
         
@@ -135,7 +141,7 @@ class RobotOdom(Robot):
 
         self._state['x'] += delta_t*(self._state['vx'])
         self._state['y'] += delta_t*(self._state['vy'])
-        self._state['quat'] = tf.transformations.quaternion_from_euler(0, 0, self._state['theta'])
+        self._state['quat'] = tf.transformations.quaternion_from_euler(0.0, 0.0, self._state['theta'])
 
     def convert_angle_to_unitary(self, angle):
 
@@ -214,12 +220,11 @@ class RobotOdom(Robot):
         odom.header.frame_id = 'odom'
 
         odom.pose.pose = Pose(Point(self._state['x'], self._state['y'], self._state['z']), Quaternion(*(self._state['quat'])))
-        odom.twist.twist = Twist(Vector3(self._state['vx'], self._state['vy'], 0), Vector3(0, 0, self._state['angular_velocity']))
+        odom.twist.twist = Twist(Vector3(self._state['vx'], self._state['vy'], 0), Vector3(0.0, 0.0, self._state['angular_velocity']))
 
         self.pub_odom.publish(odom)
 
     def odom_custom_publish(self):
-
         """
         publishes custom odometry stream to /odom_custom
 

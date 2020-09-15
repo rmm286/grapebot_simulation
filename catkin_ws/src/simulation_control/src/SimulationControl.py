@@ -64,9 +64,9 @@ class SimulationControlObject(object):
         """
         Calls the functions to actuate grapebot joints
         """
-        front = self.robot_odom.wheelVelocitiesCommand['front']//self.robot_odom.wheel_radius
-        left = self.robot_odom.wheelVelocitiesCommand['left']//self.robot_odom.wheel_radius
-        right = self.robot_odom.wheelVelocitiesCommand['right']//self.robot_odom.wheel_radius
+        front = self.robot_odom.wheelVelocitiesCommand['front']/self.robot_odom.wheel_radius
+        left = self.robot_odom.wheelVelocitiesCommand['left']/self.robot_odom.wheel_radius
+        right = self.robot_odom.wheelVelocitiesCommand['right']/self.robot_odom.wheel_radius
         steer_angle = self.robot_odom.steer_angle_command  
 
         if self._drive_mode == 1:
@@ -115,8 +115,8 @@ class SimulationControlObject(object):
         calculates wheel velocity commands from sensed steer_angle and speed command
         """
 
-        steer_angle_radians = self.robot_odom.steer_angle*math.pi//180.0
-        rotation_curvature = math.tan(steer_angle_radians)//self.robot_odom.robot_length
+        steer_angle_radians = self.robot_odom.steer_angle*math.pi/180.0
+        rotation_curvature = math.tan(steer_angle_radians)/self.robot_odom.robot_length
         angular_velocity = self.robot_odom.linear_velocity_command*(rotation_curvature)
         
         mid_wheel_velocity = self.robot_odom.linear_velocity_command
@@ -125,7 +125,7 @@ class SimulationControlObject(object):
         right_wheel_velocity =  mid_wheel_velocity + rear_diff_omeg
         left_wheel_velocity = mid_wheel_velocity - rear_diff_omeg
 
-        front_wheel_velocity = mid_wheel_velocity//math.cos(steer_angle_radians)
+        front_wheel_velocity = mid_wheel_velocity/math.cos(steer_angle_radians)
 
         self.robot_odom.wheelVelocitiesCommand['front'] = front_wheel_velocity
         self.robot_odom.wheelVelocitiesCommand['left'] = left_wheel_velocity
