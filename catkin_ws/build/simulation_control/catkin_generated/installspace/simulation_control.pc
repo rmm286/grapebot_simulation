@@ -1,8 +1,0 @@
-prefix=/home/pc/grapebot_simulation/catkin_ws/install
-
-Name: simulation_control
-Description: Description of simulation_control
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: grapebot_msgs

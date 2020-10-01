@@ -50,14 +50,14 @@ class SimulationControlObject(object):
         self.pub_front_wheel_joint_velocity = rospy.Publisher('/grapebot/front_wheel_joint_velocity_controller/command',
                                                             Float64,queue_size=1)
         self.control_debug_pub = rospy.Publisher(control_state_topic,
-                                                            ControlState, queue_size=10)                                                   
+                                                            ControlState, queue_size=1)                                                   
         
         rospy.Subscriber(control_command_topic_name, ControlCommand, self.grapebot_control_cmd_callback)
 
-        self._motor_control_rate = rospy.get_param('motor_control_rate', 50)
-        self._robot_state_rate = rospy.get_param('robot_state_rate', 50)
+        self._motor_control_rate = rospy.get_param('motor_control_rate', 10)
         self._motor_drive_ROSrate = rospy.Rate(self._motor_control_rate)
-        self._state_pub_ROSrate = rospy.Rate(self._robot_state_rate) #TODO: fix rates
+        self._control_cmd_ROSrate = rospy.Rate(10) #recieve control commands at rate of 10hz
+        self._control_state_ROSrate = rospy.Rate(10)
 
     def grapebot_drive(self):
 
@@ -76,7 +76,9 @@ class SimulationControlObject(object):
             self.drive_grapebot_back_wheels(back_left=left, back_right=right, front_axis=steer_angle)
             
         if self._drive_mode == 3:
-            self.drive_grapebot_all_wheels(back_left=left, back_right=right,front=front, front_axis=steer_angle)   
+            self.drive_grapebot_all_wheels(back_left=left, back_right=right,front=front, front_axis=steer_angle)
+
+        self._motor_drive_ROSrate.sleep()   
 
     def grapebot_control_cmd_callback(self,msg):
 
@@ -108,6 +110,8 @@ class SimulationControlObject(object):
         
         # calculate wheel velocities based on ackerman
         self.update_motor_set_velocities()
+
+        self._control_cmd_ROSrate.sleep()
 
     def update_motor_set_velocities(self):
 
@@ -233,7 +237,10 @@ class SimulationControlObject(object):
         state.frontWheelVelocityResponse = self.robot_odom.wheelVelocities['front']
         state.leftWheelVelocityResponse = self.robot_odom.wheelVelocities['left']
         state.rightWheelVelocityResponse = self.robot_odom.wheelVelocities['right']
+        
         self.control_debug_pub.publish(state)
+
+        self._control_state_ROSrate.sleep()
 
 if __name__ == '__main__':
   
@@ -244,9 +251,7 @@ if __name__ == '__main__':
         simulation_control.grapebot_drive()
         simulation_control.robot_odom.odom_publish()
         simulation_control.robot_odom.odom_custom_publish()
-        simulation_control.control_state_publish()
-
-        simulation_control._state_pub_ROSrate.sleep()
-
-        
-
+        simulation_control.robot_odom.broadcast_odom_tf()
+        simulation_control.robot_odom.odom_front_imu_publish()
+        simulation_control.robot_odom.odom_rear_imu_publish()
+        simulation_control.control_state_publish() 

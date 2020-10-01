@@ -1,2 +1,0 @@
-grapebot_data_analysis:grapebot_gazebo_sim:grapebot_msgs:grapebot_sim_launch:simulation_control
--DCATKIN_DEVEL_PREFIX=/home/pc/grapebot_simulation/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pc/grapebot_simulation/catkin_ws/install -G Unix Makefiles

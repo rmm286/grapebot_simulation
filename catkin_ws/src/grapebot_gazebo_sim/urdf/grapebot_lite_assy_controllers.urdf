@@ -250,12 +250,8 @@
     <limit
       lower="-0.78"
       upper="0.78"
-      effort="100.0"
-      velocity="100.0" />
-
-    <dynamics 
-      damping = "0.1"
-      friction = "0.1"/>  
+      effort="1000.0"
+      velocity="1000.0" /> 
   </joint>
 
   <transmission name="tran4">
@@ -327,11 +323,8 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      effort="100.0"
-      velocity="100.0" />
-    <dynamics 
-      damping = "0.1"
-      friction = "0.1"/>   
+      effort="1000.0"
+      velocity="1000.0" /> 
   </joint>
 
   <transmission name="tran1">
@@ -404,12 +397,8 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      effort="100.0"
-      velocity="100.0" />
-
-    <dynamics 
-      damping = "0.1"
-      friction = "0.1"/> 
+      effort="1000.0"
+      velocity="1000.0" />
   </joint>
 
 
@@ -484,9 +473,6 @@
     <limit
       effort="100.0"
       velocity="100.0" />
-    <dynamics 
-      damping = "0.1"
-      friction = "0.1"/>  
   </joint>
 
   <transmission name="tran3">
