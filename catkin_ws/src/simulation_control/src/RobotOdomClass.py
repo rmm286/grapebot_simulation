@@ -195,7 +195,7 @@ class RobotOdom(Robot):
         
         self.br.sendTransform((self._state['x'], self._state['y'], 0),
                      tf.transformations.quaternion_from_euler(0, 0, self._state['theta']),
-                     rospy.Time.now(),
+                     rospy.get_rostime(),
                      'grapebot/base_link',
                      'odom')
         self._odom_pub_ROSrate.sleep()
@@ -300,8 +300,8 @@ class RobotOdom(Robot):
             float64 y
             float64 z
         """
-        now = rospy.get_rostime()
-        self.front_imu_tf_listener.waitForTransform('/world', '/front_imu', rospy.Time(), rospy.Duration(1.0))        
+        self.front_imu_tf_listener.waitForTransform('/world', '/front_imu', rospy.get_rostime(), rospy.Duration(1.0))
+        now = rospy.get_rostime()        
         (front_imu_translation,front_imu_rotation) = self.front_imu_tf_listener.lookupTransform('/world', '/front_imu', now)
         self._front_imu_z = front_imu_translation[2] + self._state['z']
     
@@ -335,8 +335,8 @@ class RobotOdom(Robot):
             float64 y
             float64 z
         """
-        now = rospy.get_rostime()
-        self.rear_imu_tf_listener.waitForTransform('/world', '/rear_imu', rospy.Time(), rospy.Duration(1.0))        
+        self.rear_imu_tf_listener.waitForTransform('/world', '/rear_imu', rospy.get_rostime(), rospy.Duration(1.0))
+        now = rospy.get_rostime()        
         (rear_imu_translation,rear_imu_rotation) = self.rear_imu_tf_listener.lookupTransform('/world', '/rear_imu', now)
         self._rear_imu_z = rear_imu_translation[2] + self._state['z']
     

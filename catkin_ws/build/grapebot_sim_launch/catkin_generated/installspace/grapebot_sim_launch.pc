@@ -1,0 +1,8 @@
+prefix=/home/pc/grapebot_simulation/catkin_ws/install
+
+Name: grapebot_sim_launch
+Description: Description of grapebot_sim_launch
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
