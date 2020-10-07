@@ -2,7 +2,7 @@
 <launch>
 <!-- Spawns grapebot File with controllers -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" />
-
+    <node pkg="tf" type="static_transform_publisher" name="tf_odom" args=" 0 0 0 0 0 0 world odom 40"/>
     <include file="$(find grapebot_sim_launch)/launch/spawn_urdf.launch">
         <arg name="x" value="0.0" />
         <arg name="y" value="0.0" />
@@ -13,4 +13,5 @@
         />
         <arg name="robot_name" value="grapebot" />
     </include>
+    <param name="use_sim_time" value="true" />
 </launch>

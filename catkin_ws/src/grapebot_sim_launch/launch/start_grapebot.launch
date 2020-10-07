@@ -5,6 +5,4 @@
     <include file="$(find grapebot_sim_launch)/launch/grapebot_control.launch"/>
     <arg name="node_start_delay" default="3.0" />  
     <node pkg="simulation_control" type="SimulationControl.py" name="simulation_control_node" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/> 
-    <node pkg="tf" type="static_transform_publisher" name="odom_tf" args=" 0 0 0 0 0 0 /world /odom 100"/> <!-- odom frame is fixed to world origin-->
-    <param name="/use_sim_time" value="true"/>
 </launch>
