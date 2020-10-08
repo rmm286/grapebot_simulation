@@ -83,7 +83,7 @@ class RobotOdom(Robot):
                             'linear_velocity': 0,
                             'angular_velocity': twist.angular.z}
 
-        self._state['theta'] = self.convert_angle_to_unitary(self.convert_quat_angle_to_unitary(self._state['theta'][2]) + pi/2) # we have to phase shift to match traditional convention
+        self._state['theta'] = self.convert_angle_to_unitary(self._state['theta'][2])
         self._state['quat'] = tf.transformations.quaternion_from_euler(0.0, 0.0, self._state['theta'])
         self._state['linear_velocity'] = math.sqrt(self._state['vx']**2 + self._state['vy']**2)
 
@@ -137,9 +137,7 @@ class RobotOdom(Robot):
         """
         updates the current pose of robot based on sensed wheel velocity and steering angle.
 
-        Note on Gazebo and typical Yaw conventions: Gazebo chooses to define theta (the yaw angle) as the angle originating at the y-axis
-        moving CCW toward the negative x direction. We instead choose to report this angle conventionally as originating at x-axis and moving
-        CCW toward y-axis.
+        Note: Due to initial designation in URDF file, y is 
 
         :param delta_t: timestep, seconds
         """
@@ -151,8 +149,8 @@ class RobotOdom(Robot):
         
         self._state['theta'] = self.convert_angle_to_unitary(self._state['theta'] + delta_t*(self._state['angular_velocity']))
 
-        self._state['vx'] = self._state['linear_velocity'] * cos(self._state['theta'])
-        self._state['vy'] = self._state['linear_velocity'] * sin(self._state['theta'])
+        self._state['vy'] = self._state['linear_velocity'] * cos(self._state['theta'])
+        self._state['vx'] = self._state['linear_velocity'] * -1*sin(self._state['theta'])
 
         self._state['x'] += delta_t*(self._state['vx'])
         self._state['y'] += delta_t*(self._state['vy'])
@@ -335,6 +333,7 @@ class RobotOdom(Robot):
             float64 y
             float64 z
         """
+
         self.rear_imu_tf_listener.waitForTransform('/world', '/rear_imu', rospy.get_rostime(), rospy.Duration(1.0))
         now = rospy.get_rostime()        
         (rear_imu_translation,rear_imu_rotation) = self.rear_imu_tf_listener.lookupTransform('/world', '/rear_imu', now)

@@ -51,7 +51,7 @@ class SimulationControlObject(object):
                                                             Float64,queue_size=1)
         self.control_debug_pub = rospy.Publisher(control_state_topic,
                                                             ControlState, queue_size=1)                                                   
-        
+ 
         rospy.Subscriber(control_command_topic_name, ControlCommand, self.grapebot_control_cmd_callback)
 
         self._motor_control_rate = rospy.get_param('motor_control_rate', 10)
