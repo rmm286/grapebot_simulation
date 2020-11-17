@@ -69,14 +69,14 @@ class SimulationControlObject(object):
         right = self.robot_odom.wheelVelocitiesCommand['right']/self.robot_odom.wheel_radius
         steer_angle = self.robot_odom.steer_angle_command  
 
-        if self._drive_mode == 1:
-            self.drive_grapebot_front_wheel(front=front, front_axis=steer_angle)
-            
-        if self._drive_mode == 2:
-            self.drive_grapebot_back_wheels(back_left=left, back_right=right, front_axis=steer_angle)
-            
         if self._drive_mode == 3:
             self.drive_grapebot_all_wheels(back_left=left, back_right=right,front=front, front_axis=steer_angle)
+        elif self._drive_mode == 2:
+            self.drive_grapebot_back_wheels(back_left=left, back_right=right, front_axis=steer_angle)
+        elif self._drive_mode ==1:
+            self.drive_grapebot_front_wheel(front=front, front_axis=steer_angle)
+        else: 
+            print('Error: Invalid Drive Mode.')
 
         self._motor_drive_ROSrate.sleep()   
 
@@ -94,22 +94,27 @@ class SimulationControlObject(object):
         int16 controlMode
         bool robotStop
         """
+        if msg.robotStop:
+            self.robot_odom.control_mode = msg.control_mode
+            self.robot_odom.linear_velocity = 0.0
+            self.robot_odom.angular_velocity = 0.0
+            self.robot_odom.steer_angle_command = 0.0
+            self.robot_odom.stop = msg.robotStop
 
-        if msg.controlMode == 0:
+        elif msg.controlMode == 0:
             self.robot_odom.control_mode = 0
             self.robot_odom.linear_velocity_command = msg.linearVelocity
             self.robot_odom.angular_velocity_command = msg.angularVelocity
             self.robot_odom.steer_angle_command = atan2((msg.linearVelocity*self.robot_odom.robot_length),msg.angularVelocity)
             self.robot_odom.stop = msg.robotStop
+            self.update_motor_set_velocities()
 
-        if msg.controlMode == 1:
+        else:
             self.robot_odom.control_mode = 1
             self.robot_odom.linear_velocity_command = msg.linearVelocity
             self.robot_odom.steer_angle_command = msg.steeringAngle
             self.robot_odom.stop = msg.robotStop
-        
-        # calculate wheel velocities based on ackerman
-        self.update_motor_set_velocities()
+            self.update_motor_set_velocities()     
 
         self._control_cmd_ROSrate.sleep()
 
@@ -250,8 +255,7 @@ if __name__ == '__main__':
         
         simulation_control.grapebot_drive()
         simulation_control.robot_odom.odom_publish()
-        simulation_control.robot_odom.odom_custom_publish()
-        simulation_control.robot_odom.broadcast_odom_tf()
-        simulation_control.robot_odom.odom_front_imu_publish()
-        simulation_control.robot_odom.odom_rear_imu_publish()
+        simulation_control.robot_odom.broadcast_grapebot_tf()
+        simulation_control.robot_odom.pose_front_gps_publish()
+        simulation_control.robot_odom.pose_rear_gps_publish()
         simulation_control.control_state_publish() 

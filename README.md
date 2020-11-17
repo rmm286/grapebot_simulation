@@ -23,6 +23,8 @@ The Grapebot simulator is a ROS based tool that uses [Gazebo][1] to model the ph
 
 ***
 
+Note: Working on developing a single file download.
+
 ROS is built in a catkin workspace. Read more about catkin [here](http://wiki.ros.org/action/fullsearch/catkin/conceptual_overview?action=fullsearch&context=180&value=linkto%3A%22catkin%2Fconceptual_overview%22).
 
 To build, navigate to the catkin workspace, remove any build files and run catkin_make.

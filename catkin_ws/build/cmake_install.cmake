@@ -127,6 +127,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/pc/grapebot_simulation/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/pc/grapebot_simulation/catkin_ws/build/grapebot_sim_launch/cmake_install.cmake")
+  include("/home/pc/grapebot_simulation/catkin_ws/build/map_initializer/cmake_install.cmake")
   include("/home/pc/grapebot_simulation/catkin_ws/build/grapebot_msgs/cmake_install.cmake")
   include("/home/pc/grapebot_simulation/catkin_ws/build/grapebot_data_analysis/cmake_install.cmake")
   include("/home/pc/grapebot_simulation/catkin_ws/build/grapebot_gazebo_sim/cmake_install.cmake")

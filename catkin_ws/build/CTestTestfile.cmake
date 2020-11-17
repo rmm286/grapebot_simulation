@@ -6,6 +6,7 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs(gtest)
 subdirs(grapebot_sim_launch)
+subdirs(map_initializer)
 subdirs(grapebot_msgs)
 subdirs(grapebot_data_analysis)
 subdirs(grapebot_gazebo_sim)
