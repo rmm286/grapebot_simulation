@@ -1,5 +1,6 @@
 <launch>
   <!-- Load joint controller configurations from YAML file to parameter server -->
+  
   <rosparam file="$(find grapebot_gazebo_sim)/config/grapebot_onecontroller.yaml" command="load"/>
 
   <!-- load the controllers -->
