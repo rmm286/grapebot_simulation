@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-<!-- Spawns grapebot File with controllers     -->
+<!-- Spawns grapebot with controllers in an empty world-->
     
     <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
-       <arg name="world_name" value="factory.world"/>  <!--Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
-    </include> <!-- for this launch file to work, you must modify the GAZEBO_RESOURCE_PATH, GAZEBO_MODEL_PATH and GAZEBO_PLUGIN_PATH in the terminal, or modify .bashrc-->
+    </include>
 
     <node pkg="tf" type="static_transform_publisher" name="tf_odom" args=" 0 0 0 0 0 0 world odom 40"/>
     <include file="$(find grapebot_sim_launch)/launch/spawn_urdf.launch">

@@ -19,7 +19,7 @@ def talker(mode):
     #rospy.loginfo(timestr)
     
     raw_steering_angle = 0.0
-    raw_linear_velocity = 8.5
+    raw_linear_velocity = 1
 
 #    if ((now.secs) < 5) or ((now.secs) > 10):
 #        raw_steering_angle = 0.0

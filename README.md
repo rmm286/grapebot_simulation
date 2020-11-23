@@ -33,6 +33,8 @@ To build, navigate to the catkin workspace, remove any build files and run catki
  `rm -rd build;`
  `catkin_make;`
 
+You may need to rebuild the world plugin package, built with cmake and make.
+
 At this point, you may encounter issues with dependencies so you can install these with your package manager, with [rosdep](http://wiki.ros.org/ROS/Tutorials/rosdep), or with APT like this.
 
 `sudo apt-get install ros-kinetic-<dependency>;`

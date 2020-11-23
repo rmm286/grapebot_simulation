@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    
+  <!-- loads the plugin world without any robots.-->  
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="worlds/factory.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="world_name" value="factory.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
     <!--<arg name="paused" value="false"/>-->
     <!--<arg name="use_sim_time" value="true"/>-->
     <!--<arg name="gui" value="true"/>-->

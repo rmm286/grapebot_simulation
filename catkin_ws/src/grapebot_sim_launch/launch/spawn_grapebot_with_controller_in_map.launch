@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!-- Spawns grapebot with controllers in the map world -->
+    
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
+       <arg name="world_name" value="factory.world"/>  <!--Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    </include>
+
+    <node pkg="tf" type="static_transform_publisher" name="tf_odom" args=" 0 0 0 0 0 0 world odom 40"/>
+    <include file="$(find grapebot_sim_launch)/launch/spawn_urdf.launch">
+        <arg name="x" value="2.0" />
+        <arg name="y" value="-5.0" />
+        <arg name="z" value="0.2" />
+        <arg 
+        name="urdf_robot_file"
+        value="$(find grapebot_gazebo_sim)/urdf/grapebot_lite_assy_controllers.urdf"
+        />
+        <arg name="robot_name" value="grapebot" />
+    </include>
+    <param name="use_sim_time" value="true" />
+</launch>
