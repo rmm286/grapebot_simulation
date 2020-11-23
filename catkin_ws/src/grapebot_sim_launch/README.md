@@ -38,4 +38,4 @@ Spawn the controllers for the grapebot.
 
 ### map_world.launch
 
-Open the custom plugin world in gazebo. 
+Open the custom plugin world in gazebo.
