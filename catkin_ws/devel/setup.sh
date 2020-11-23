@@ -94,3 +94,7 @@ done
 unset _i
 
 unset _CATKIN_ENVIRONMENT_HOOKS_COUNT
+
+export GAZEBO_MODEL_PATH=$HOME/grapebot_simulation/gazebo_plugin_model_dir/models:/usr/share/gazebo-7/models:$GAZEBO_MODEL_PATH
+export GAZEBO_PLUGIN_PATH=$HOME/grapebot_simulation/gazebo_plugin_model_dir/build:$GAZEBO_PLUGIN_PATH
+export GAZEBO_RESOURCE_PATH=$HOME/grapebot_simulation/gazebo_plugin_model_dir:/usr/share/gazebo-7:$GAZEBO_RESOURCE_PATH

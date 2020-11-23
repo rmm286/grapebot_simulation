@@ -167,17 +167,16 @@ class RobotOdom(Robot):
         position = self._grapebot_model_pose_dict['grapebot'].position
         orientation = self._grapebot_model_pose_dict['grapebot'].orientation
 
+        theta = tf.transformations.euler_from_quaternion([orientation.x,
+                                                                orientation.y,
+                                                                orientation.z,
+                                                                orientation.w ])
+        theta = self.convert_angle_to_unitary(theta[2])
+
         self._true_state = {'x': position.x,
                             'y': position.y,
                             'z': position.z,
-                            'theta':tf.transformations.euler_from_quaternion([
-                                                                orientation.x,
-                                                                orientation.y,
-                                                                orientation.z,
-                                                                orientation.w ]),}
-
-        self._true_state['theta'] = self.convert_angle_to_unitary(self._true_state['theta'][2])
-
+                            'theta': theta}
 
     def update_odom(self,delta_t):
 
