@@ -53,9 +53,13 @@ The Rosnodes in this package produce data streams in the form of [Rostopics][2].
 
 ### Launch Commands
 
-Start gazebo, spawn grapebot and controllers:
+Start gazebo, spawn grapebot and controllers in the map world:
 
-* `roslaunch grapebot_sim_launch start_grapebot.launch`
+* `roslaunch grapebot_sim_launch start_grapebot_in_map.launch`
+
+Start gazebo, spawn grapebot and controllers in the empty world:
+
+* `roslaunch grapebot_sim_launch start_grapebot_in_empty_world.launch`
 
 Issue simple control commands:
 
