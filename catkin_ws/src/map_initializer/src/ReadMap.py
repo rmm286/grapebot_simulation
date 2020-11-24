@@ -6,26 +6,24 @@ import tf
 import tf2_ros
 import geometry_msgs.msg
 
-from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 import geometry_msgs.msg
 #import transformation_py.transformation as transformation
 
 class FieldMapPublisher(object):
     def __init__(self):
-        rospy.init_node('field_map')
+        rospy.init_node('GPS_tf_node')
         # rospy.sleep(0.5)  # Wait for a while for init to complete before printing
         rospy.loginfo(rospy.get_name() + " start")
         self.rate = rospy.Rate(1.) # 10hz
 
         # get static map information
-        self.map_file = rospy.get_param('map_file', default= '/home/pc/grapebot_simulation/catkin_ws/src/map_initializer/RMI-Harry-E-Jacob-UTM-Extend.txt')
-        self.map_dict = eval(open('/home/pc/grapebot_simulation/catkin_ws/src/map_initializer/RMI-Harry-E-Jacob-UTM-Extend.txt', 'r').read())
-        #TODO: fix map file
+        self.map_file = rospy.get_param('map_file', default= '/home/pc/grapebot_simulation/gazebo_plugin_model_dir/map_file.json')
+        self.map_dict = eval(open(self.map_file, 'r').read())
         self.map_heading = self.map_dict['heading']
         self.map_origin = np.asarray(self.map_dict['origin'])
         self.map_rows = np.asarray(self.map_dict['rows'])
-        #print("map_file: ", self.map_file)
+        print("map_file: ", self.map_file)
         print("map_heading: ", self.map_heading)
         print("map_origin: ", self.map_origin)
         print("map_rows: ", self.map_rows.shape)
@@ -35,14 +33,6 @@ class FieldMapPublisher(object):
 
         self.publish_ned_to_field_static_tf()
         self.map_rows_local = self.transform_map_points_to_local_frame()
-
-        self.field_row_lines = Marker() # line list
-
-        self.add_field_ros_feature()
-
-        # # create vertices for points and lines
-        self.rviz_plot()
-        self.map_publisher = rospy.Publisher("/field_map", Marker, queue_size=10)
 
     def publish_ned_to_field_static_tf(self):
         translation = self.odom_T_gps[:, 3]
@@ -72,31 +62,6 @@ class FieldMapPublisher(object):
         map_rows_transfered = map_rows_transfered.reshape([-1, 2, 2])
         return map_rows_transfered
 
-
-    def add_field_ros_feature(self):
-        self.field_row_lines.header.frame_id = "/odom"
-        self.field_row_lines.ns = "field_beds"
-        self.field_row_lines.type = Marker.LINE_LIST
-        self.field_row_lines.action = Marker.ADD
-        self.field_row_lines.pose.orientation.w = 1.0
-        self.field_row_lines.scale.x = 0.2
-
-        self.field_row_lines.color.r = 1.0
-        self.field_row_lines.color.a = 1.0
-
-    def rviz_plot(self):
-        # draw plant bed points and beds
-        for row in self.map_rows_local:
-            p = Point()
-            p.x = row[0, 0]
-            p.y = row[0, 1]
-            p.z = 0.0
-            self.field_row_lines.points.append(p)
-            p2 = Point()
-            p2.x = row[1, 0]
-            p2.y = row[1, 1]
-            p2.z = 0.0
-            self.field_row_lines.points.append(p2)
 
     def map_pub(self):
         while not rospy.is_shutdown():
