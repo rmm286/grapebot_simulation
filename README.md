@@ -53,7 +53,7 @@ The Rosnodes in this package produce data streams in the form of [Rostopics][2].
 
 ### Launch Commands
 
-Start gazebo, spawn grapebot and controllers in the map world:
+Start gazebo, spawn grapebot and controllers in the custom map world:
 
 * `roslaunch grapebot_sim_launch start_grapebot_in_map.launch`
 

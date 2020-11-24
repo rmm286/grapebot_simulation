@@ -21,4 +21,4 @@ To change the behvior of the world plugin the user can modify the factory.cc fil
 - model_name: determines which model is used to build the rows.
 - row_size: determines how many rows are built in the custom world.
 
-The map_fil JSON contains information about how to build the world, origin and odom_T_gps are two fields that determine how any given coordinate is transformed from the UTM frame to the local frame. The Rows field contains a set of pairs of coordinates. These coordinates define the endpoint of rows and are the basis for the custom world.
+The map_fil JSON contains information about how to build the world. Origin and odom_T_gps are two fields that determine how any given coordinate is transformed from the UTM frame to the local frame. The Rows field contains many pairs of coordinates. These coordinates define the endpoints of rows and are the basis for the custom world.
