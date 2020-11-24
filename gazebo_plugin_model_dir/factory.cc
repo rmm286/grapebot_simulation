@@ -60,14 +60,13 @@ namespace gazebo
     void Load(physics::WorldPtr _parent, sdf::ElementPtr /*_sdf*/)
     {
       {
-        //char file_name[] = "map_file.json";
-        //char model_name[] = "box";
-        //char file_path_name[] = "/home/pc/grapebot_simulation/gazebo_plugin_model_dir/";
-        //char model_path[] = "model://";
-
+        char map_file_name[] = "map_file.json";
+        char model_name[] = "box";
+        char file_path[] = "/home/pc/grapebot_simulation/gazebo_plugin_model_dir/";
+        char model_path[] = "model://";
 
         //read map data
-        std::ifstream data_("/home/pc/grapebot_simulation/gazebo_plugin_model_dir/map_file.json"); //std::strcat(file_path_name,file_name));
+        std::ifstream data_(std::strcat(file_path,map_file_name));
         json jsonData = json::parse(data_);
 
         json_data::mapData map_data{
@@ -92,15 +91,13 @@ namespace gazebo
         msgs::Factory msg;
 
         // Model file to load
-        msg.set_sdf_filename("model://grape_vine"); //std::strcat(model_path,model_name));
-
+        msg.set_sdf_filename(std::strcat(model_path,model_name));
 
         //number of grapevines in each row
-        
-        int rowsize = rows_in_local_frame.size();
-        rowsize = 2;
+        int row_size = rows_in_local_frame.size();
+        row_size = 2;
 
-        for (int i = 0; i < rowsize; i++)
+        for (int i = 0; i < row_size; i++)
         {
           double direction[2] = {rows_in_local_frame[i][1][0] - rows_in_local_frame[i][0][0],
                                  rows_in_local_frame[i][1][1] - rows_in_local_frame[i][0][1]};
