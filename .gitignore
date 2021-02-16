@@ -47,3 +47,6 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+#VS code config files
+.vscode/
